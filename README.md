@@ -7,6 +7,14 @@ It replaces the vanilla Advancements screen with a full-window tree (or a list),
 
 This is an independent implementation. It makes no network requests. It has no author API, news, credits or announcements. It does not collect, hash or store machine or hardware identifiers.
 
+<img width="1437" height="958" alt="image" src="https://github.com/user-attachments/assets/a7f70e3a-0f58-47b7-b78e-ed30cf33592a" />
+<img width="1437" height="958" alt="image" src="https://github.com/user-attachments/assets/a6e35f9b-d782-4699-b603-818b5465ae09" />
+<img width="1437" height="958" alt="image" src="https://github.com/user-attachments/assets/5a550277-6d6c-4ef0-8ee3-c8430ed551b6" />
+<img width="1437" height="958" alt="image" src="https://github.com/user-attachments/assets/20fc4a02-cc94-4178-aae6-d0d387a08abb" />
+<img width="1437" height="958" alt="image" src="https://github.com/user-attachments/assets/00353d53-d55a-4c1b-871f-ff81f9ffdfc5" />
+<img width="1437" height="958" alt="image" src="https://github.com/user-attachments/assets/ad72b987-538f-40ae-9ce2-81952eb9e71d" />
+
+
 ## Features
 
 - Click **Advancements** on the pause menu, or press the existing Advancements key (L by default), to open Advancements+. `/advplus panel` does the same. There is no extra keybind.
