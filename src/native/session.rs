@@ -113,7 +113,7 @@ pub fn write_prefs(game: &crate::game::Game<'_>) {
 pub fn sync(game: &crate::game::Game<'_>) {
     let tree = &game.adv.tree;
     let kids = tree.children();
-    let visible = if game.adv.positions.is_some() {
+    let visible = if game.adv.remote_tree.is_some() {
         vec![true; tree.list.len()]
     } else {
         tree.visible(&kids, |i| game.adv.progress.done(&tree.list[i]))
