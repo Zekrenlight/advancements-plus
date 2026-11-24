@@ -1,6 +1,6 @@
 id = "advplus"
 name = "Advancements+"
-version = "1.0.0"
+version = "1.0.1"
 description = "A clearer Advancements screen with a full tree, search and filters, plus on-screen plaques in place of the stock toasts. Fully offline."
 authors = ["Zekrenlight"]
 license = "MIT"
