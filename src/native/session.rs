@@ -82,6 +82,14 @@ thread_local! {
     static SESSION: RefCell<Session> = RefCell::new(Session::default());
 }
 
+fn data_dir(game: &crate::game::Game<'_>) -> std::path::PathBuf {
+    game.instance_dir().join("sunrise-mod-data").join(MOD_ID)
+}
+
+fn say(game: &mut crate::game::Game<'_>, message: impl AsRef<str>) {
+    game.chat_line(sunrise_client::text::Text::literal(message.as_ref().to_string()));
+}
+
 pub fn revise<R>(f: impl FnOnce(&mut Session) -> R) -> R {
     SESSION.with(|c| f(&mut c.borrow_mut()))
 }
@@ -95,7 +103,7 @@ pub fn ensure_ready(game: &crate::game::Game<'_>) {
         if s.ready {
             return;
         }
-        let path = game.native_data_dir(MOD_ID).join(FILE_NAME);
+        let path = data_dir(game).join(FILE_NAME);
         if let Ok(text) = fs::read_to_string(&path) {
             s.prefs = load_prefs(&text);
         }
@@ -104,7 +112,7 @@ pub fn ensure_ready(game: &crate::game::Game<'_>) {
 }
 
 pub fn write_prefs(game: &crate::game::Game<'_>) {
-    let dir = game.native_data_dir(MOD_ID);
+    let dir = data_dir(game);
     let _ = fs::create_dir_all(&dir);
     let text = revise(|s| dump_prefs(&s.prefs));
     let _ = fs::write(dir.join(FILE_NAME), text);
@@ -416,8 +424,8 @@ pub fn on_command(game: &mut crate::game::Game<'_>, command: &str, ran: &mut boo
     let verb = parts.next().unwrap_or("help");
     match verb {
         "panel" | "" => toggle_panel(game),
-        "help" => game.native_chat("Advancements+ commands: /advplus panel | help"),
-        other => game.native_chat(&format!("Unknown /advplus subcommand '{other}'. Try /advplus help.")),
+        "help" => say(game, "Advancements+ commands: /advplus panel | help"),
+        other => say(game, &format!("Unknown /advplus subcommand '{other}'. Try /advplus help.")),
     }
 }
 
